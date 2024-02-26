@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Clickable Sphere Animation</title>
+  <style>
+    body {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      margin: 0;
+    }
+
+    .sphere {
+      width: 100px;
+      height: 100px;
+      background-color: #3498db;
+      border-radius: 50%;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      color: white;
+      font-size: 18px;
+      cursor: pointer;
+      transition: transform 0.3s ease;
+    }
+
+    .sphere:hover {
+      transform: scale(1.1);
+    }
+
+    @keyframes bounce {
+      0%, 100% {
+        transform: translateY(0);
+      }
+      50% {
+        transform: translateY(-20px);
+      }
+    }
+
+    .sphere.clicked {
+      animation: bounce 0.5s ease;
+    }
+  </style>
+</head>
+<body>
+  <div class="sphere" onclick="playAnimation()">Click or hover me!</div>
+
+  <script>
+    function playAnimation() {
+      const sphere = document.querySelector('.sphere');
+      sphere.classList.add('clicked');
+      setTimeout(() => {
+        sphere.classList.remove('clicked');
+      }, 500);
+    }
+  </script>
+</body>
+</html>
